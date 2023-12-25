@@ -24,17 +24,17 @@ if res["result"]:
     txt = res.text
     if res.status_code == 200:
         if "用户登录状态异常，请重新登录！" not in txt:
-            clockinId = re.search(r'<input id="clockinId" type="hidden" value="(\d+)">', txt, re.I).groups()[0]
-            recruitId = re.search(r'<input type="hidden" id="recruitId" value="(\d+)" />', txt, re.I).groups()[0]
-            pcid = re.search(r'<input type="hidden" id="pcid" value="(\d+)" />', txt, re.I).groups()[0]
-            pcmajorid = re.search(r'<input type="hidden" id="pcmajorid" value="(\d+)" />', txt, re.I).groups()[0]
+            clockinId = re.search(r'<input id="clockinId" type="hidden" value="(.*)">', txt, re.I).groups()[0]
+            recruitId = re.search(r'<input type="hidden" id="recruitId" value="(.*)" />', txt, re.I).groups()[0]
+            pcid = re.search(r'<input type="hidden" id="pcid" value="(.*)" />', txt, re.I).groups()[0]
+            pcmajorid = re.search(r'<input type="hidden" id="pcmajorid" value="(.*)" />', txt, re.I).groups()[0]
             address = address
             geolocation = location
             remark = remark
             should_bntover = re.search(r'''<dd class="should_bntover" selid="(.*)" workStart='(.*)' workEnd='(.*)'>''', txt, re.I).groups()
             workStart = should_bntover[1]
             workEnd = should_bntover[2]
-            allowOffset = re.search(r'<input type="hidden" id="allowOffset" value="(\d+)"/>', txt, re.I).groups()[0]
+            allowOffset = re.search(r'<input type="hidden" id="allowOffset" value="(.*)"/>', txt, re.I).groups()[0]
             offduty = 0
             changeLocation = re.search(r'<input type="text" name="location" id="location" value="(.*)" hidden/>', txt, re.I).groups()[0]
             if re.search(r'<input id="workLocation" type="hidden" >', txt, re.I) is None:
